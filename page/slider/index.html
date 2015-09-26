@@ -52,7 +52,86 @@
 
     </section>
 
-    <pre id="pre"></pre>
+<pre class="javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> slider <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> Slider<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#91;</span>
+  <span style="color: #009900;">&#123;</span>
+&nbsp;
+&nbsp;
+   <span style="color: #006600; font-style: italic;">// Основной контейнер</span>
+   sliderContainer<span style="color: #339933;">:</span> <span style="color: #3366CC;">'container-slider'</span><span style="color: #339933;">,</span>
+&nbsp;
+&nbsp;
+   <span style="color: #006600; font-style: italic;">// Контейнер слайдов</span>
+   allSlidesList<span style="color: #339933;">:</span> <span style="color: #3366CC;">'all-list'</span><span style="color: #339933;">,</span>
+   timeout<span style="color: #339933;">:</span> <span style="color: #CC0000;">1000</span><span style="color: #339933;">,</span>
+   speed<span style="color: #339933;">:</span> <span style="color: #CC0000;">500</span><span style="color: #339933;">,</span>
+   autoplay<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">,</span>
+   startSlide<span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">function</span> <span style="color: #009900;">&#40;</span>obj<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+&nbsp;
+&nbsp;
+     <span style="color: #006600; font-style: italic;">// 'obj' - возвращает данные о текущем слайде</span>
+   <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+   endSlide<span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">function</span> <span style="color: #009900;">&#40;</span>obj<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+   controls<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span>
+&nbsp;
+&nbsp;
+     <span style="color: #006600; font-style: italic;">// Кнопки следюющий/предыдущий</span>
+     <span style="color: #006600; font-style: italic;">// Классы для копок 'next'/'prev'</span>
+     arrowsNavigation<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span>
+       classNameBtnNext<span style="color: #339933;">:</span> <span style="color: #3366CC;">'next'</span><span style="color: #339933;">,</span>
+       classNameBtnPrev<span style="color: #339933;">:</span> <span style="color: #3366CC;">'prev'</span>
+     <span style="color: #009900;">&#125;</span>
+   <span style="color: #009900;">&#125;</span>
+ <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span> <span style="color: #009900;">&#123;</span>
+   sliderContainer<span style="color: #339933;">:</span> <span style="color: #3366CC;">'container-slider'</span><span style="color: #339933;">,</span>
+   allSlidesList<span style="color: #339933;">:</span> <span style="color: #3366CC;">'all-list'</span><span style="color: #339933;">,</span>
+   timeout<span style="color: #339933;">:</span> <span style="color: #CC0000;">1000</span><span style="color: #339933;">,</span>
+   speed<span style="color: #339933;">:</span> <span style="color: #CC0000;">500</span><span style="color: #339933;">,</span>
+   autoplay<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">,</span>
+   controls<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span>
+     arrowsNavigation<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span>
+       classNameBtnNext<span style="color: #339933;">:</span> <span style="color: #3366CC;">'next'</span><span style="color: #339933;">,</span>
+       classNameBtnPrev<span style="color: #339933;">:</span> <span style="color: #3366CC;">'prev'</span>
+     <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+&nbsp;
+&nbsp;
+     <span style="color: #006600; font-style: italic;">// Нумирация слайдов</span>
+     <span style="color: #006600; font-style: italic;">// Контейнер класс 'dots'</span>
+     <span style="color: #006600; font-style: italic;">// Активный слайд класс 'active'</span>
+     dotsNavigation<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span>
+       classNameDots<span style="color: #339933;">:</span> <span style="color: #3366CC;">'dots'</span><span style="color: #339933;">,</span>
+       classNameActive<span style="color: #339933;">:</span> <span style="color: #3366CC;">'active'</span>
+     <span style="color: #009900;">&#125;</span>
+   <span style="color: #009900;">&#125;</span>
+ <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span> <span style="color: #009900;">&#123;</span>
+   sliderContainer<span style="color: #339933;">:</span> <span style="color: #3366CC;">'container-slider'</span><span style="color: #339933;">,</span>
+   allSlidesList<span style="color: #339933;">:</span> <span style="color: #3366CC;">'all-list'</span><span style="color: #339933;">,</span>
+   timeout<span style="color: #339933;">:</span> <span style="color: #CC0000;">1000</span><span style="color: #339933;">,</span>
+   speed<span style="color: #339933;">:</span> <span style="color: #CC0000;">500</span><span style="color: #339933;">,</span>
+   autoplay<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">,</span>
+   controls<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span>
+     arrowsNavigation<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span>
+       classNameBtnNext<span style="color: #339933;">:</span> <span style="color: #3366CC;">'next'</span><span style="color: #339933;">,</span>
+       classNameBtnPrev<span style="color: #339933;">:</span> <span style="color: #3366CC;">'prev'</span>
+     <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+&nbsp;
+&nbsp;
+     <span style="color: #006600; font-style: italic;">// Дополнительная навигация Бокс-меню</span>
+     boxMenu<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span>
+       classNameBox<span style="color: #339933;">:</span> document.<span style="color: #660066;">getElementsByClassName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'box'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#91;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
+       classNameActive<span style="color: #339933;">:</span> <span style="color: #3366CC;">'active'</span>
+     <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
+     dotsNavigation<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span>
+       classNameDots<span style="color: #339933;">:</span> <span style="color: #3366CC;">'dots'</span><span style="color: #339933;">,</span>
+       classNameActive<span style="color: #339933;">:</span> <span style="color: #3366CC;">'active'</span>
+     <span style="color: #009900;">&#125;</span>
+   <span style="color: #009900;">&#125;</span>
+ <span style="color: #009900;">&#125;</span>
+<span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #006600; font-style: italic;">//*******************************API***********************************</span>
+<span style="color: #006600; font-style: italic;">// slider.Buttons('&lt; следующий/предыдущий слайд &gt;', &lt; index элемента &gt;);</span>
+<span style="color: #006600; font-style: italic;">// slider.Buttons('next', 0);</span>
+<span style="color: #006600; font-style: italic;">// slider.Buttons('prev', 1);</span></pre>
 
   </main>
     
@@ -139,11 +218,6 @@ var slider = new Slider([
 // slider.Buttons('< следующий/предыдущий слайд >', < index элемента >);
 // slider.Buttons('next', 0);
 // slider.Buttons('prev', 1);
-  </script>
-
-  <script>
-  var code = document.getElementById('script').textContent;
-  document.getElementById('pre').textContent = code;
   </script>
 
   </body>

@@ -52,7 +52,25 @@
 
     </section>
 
-    <pre id="pre"></pre>
+<pre class="javascript" style="font-family:monospace;">  _elementForm.<span style="color: #660066;">start</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>
+    element<span style="color: #339933;">:</span> document.<span style="color: #660066;">getElementsByClassName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'radio'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// ДОБАВИТЬ КЛАСС ДЛЯ ВЫБРАННОГО ПУНКТА</span>
+    classActive<span style="color: #339933;">:</span> <span style="color: #3366CC;">'active'</span>
+  <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+  _elementForm.<span style="color: #660066;">start</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>
+    element<span style="color: #339933;">:</span> document.<span style="color: #660066;">getElementsByClassName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'checkbox'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span>
+    classActive<span style="color: #339933;">:</span> <span style="color: #3366CC;">'active'</span><span style="color: #339933;">,</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// АКТИВНЫЙ/НЕ АКТИВНЫЙ (true/false) </span>
+    checkbox<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span>
+  <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+&nbsp;
+  _elementForm.<span style="color: #660066;">start</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#123;</span>
+    element<span style="color: #339933;">:</span> document.<span style="color: #660066;">getElementsByClassName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'select'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">,</span>
+    activeElement<span style="color: #339933;">:</span> <span style="color: #3366CC;">'active'</span>
+  <span style="color: #009900;">&#125;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
 
   </main>
     
@@ -78,11 +96,6 @@
     element: document.getElementsByClassName('select'),
     activeElement: 'active'
   });
-  </script>
-
-  <script>
-  var code = document.getElementById('script').textContent;
-  document.getElementById('pre').textContent = code;
   </script>
 
   </body>
