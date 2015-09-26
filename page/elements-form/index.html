@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <title>Elements form</title>
+  </head>
+  <body>
+
+  <main id="main" role="main">
+    <h1>Elements form</h1> 
+
+    <a class="back" href="/">Назад</a>
+    <section class="demonstration">
+      <form id="form-send" action="#" type="post">
+        <div class="select">
+          <select id="select">
+            <option>qqqqqqqqq</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+
+
+        <div class="select">
+          <select id="select2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+          </select>
+        </div>
+           <div class="radio">
+               <input id="radio" type="radio" name="browser" value="ie">
+           </div>
+
+           <div class="radio">
+             <input id="radio2" type="radio" name="browser" value="opera">
+           </div>
+           <div class="checkbox">
+              <input id="checkbox" type="checkbox" value="hey" checked="checked" />
+           </div>
+
+          <div class="checkbox">
+              <input id="checkbox2" type="checkbox" value="roy" />
+          </div>
+      </form>
+
+    </section>
+
+    <pre id="pre"></pre>
+
+  </main>
+    
+  <script src="../../js/elements-form.js"></script>
+  
+  <script id="script">
+  _elementForm.start({
+    element: document.getElementsByClassName('radio'),
+
+    // ДОБАВИТЬ КЛАСС ДЛЯ ВЫБРАННОГО ПУНКТА
+    classActive: 'active'
+  });
+
+  _elementForm.start({
+    element: document.getElementsByClassName('checkbox'),
+    classActive: 'active',
+
+    // АКТИВНЫЙ/НЕ АКТИВНЫЙ (true/false) 
+    checkbox: true
+  });
+
+  _elementForm.start({
+    element: document.getElementsByClassName('select'),
+    activeElement: 'active'
+  });
+  </script>
+
+  <script>
+  var code = document.getElementById('script').textContent;
+  document.getElementById('pre').textContent = code;
+  </script>
+
+  </body>
+</html>

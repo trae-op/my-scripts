@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <title>Event wheel</title>
+  </head>
+  <body>
+
+  <main id="main" role="main">
+    <h1>Event wheel</h1> 
+
+    <a class="back" href="/">Назад</a>
+    
+    <section class="demonstration">
+
+      <div id="wheel-one" class="container-wheel">
+        <div id="move-one"></div>
+      </div>
+
+      <div id="wheel-two" class="container-wheel">
+        <div id="move-two"></div>
+      </div>
+
+    </section>
+
+    <pre id="pre"></pre>
+
+  </main>
+    
+  <script src="../../js/event-wheel.js"></script>
+  
+  <script id="script">
+
+_wheel.Initialize(function(object) {
+  return [
+    {
+      // В рамках этого элемента сработает событие колеса мыши
+      element: document.getElementById('wheel-one'),
+
+      // Задержка между событием
+      delay: 50,
+
+      // Счётчик от (< начальное значение >) до (< конечное значение >)
+      range: 'from (0) to (-19)',
+
+      // Колесо вниз
+      wheelBottom: function(obj) {
+        document.getElementById('move-one').style.left = (-(obj.counter * 5)) + '%';
+      },
+
+      // Колесо вверх
+      wheelTop: function(obj) {
+        document.getElementById('move-one').style.left = (-(obj.counter * 5)) + '%';
+      }
+    },
+
+    {
+      element: document.getElementById('wheel-two'),
+      delay: 50,
+      range: 'from (0) to (-100)',
+      wheelBottom: function(obj) {
+        rotateElement(-(obj.counter * 50));
+      },
+      wheelTop: function(obj) {
+        rotateElement(-(obj.counter * 50));
+      }
+    }
+  ];
+});
+
+function rotateElement(value) {
+  var div = document.getElementById('move-two');
+  div.style.webkitTransform = 'rotate('+value+'deg)'; 
+  div.style.mozTransform    = 'rotate('+value+'deg)'; 
+  div.style.msTransform     = 'rotate('+value+'deg)'; 
+  div.style.oTransform      = 'rotate('+value+'deg)'; 
+  div.style.transform       = 'rotate('+value+'deg)';  
+}
+
+// '_wheel.AllData' - все события
+_wheel.Start(_wheel.AllData);
+  </script>
+
+  <script>
+  var code = document.getElementById('script').textContent;
+  document.getElementById('pre').textContent = code;
+  </script>
+
+  </body>
+</html>

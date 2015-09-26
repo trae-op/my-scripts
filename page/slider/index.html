@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <title>Slider</title>
+  </head>
+  <body>
+
+  <main id="main" role="main">
+    <h1>Slider</h1> 
+
+    <a class="back" href="/">Назад</a>
+    <section class="demonstration">
+
+      <div class="container-slider">
+        <div class="slider">
+          <ul class="all-list">
+            <li data-slide="5"><img src="../../images/5.jpg" alt="5" /></li>
+            <li data-slide="4"><img src="../../images/4.jpg" alt="4" /></li>
+            <li data-slide="3"><img src="../../images/3.jpg" alt="3" /></li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="container-slider">
+        <div class="slider">
+          <ul class="all-list">
+            <li data-slide="3"><img src="../../images/3.jpg" alt="3" /></li>
+            <li data-slide="4"><img src="../../images/4.jpg" alt="4" /></li>
+            <li data-slide="5"><img src="../../images/5.jpg" alt="5" /></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container-slider">
+        <div class="slider">
+          <ul class="all-list">
+            <li data-slide="4"><img src="../../images/4.jpg" alt="4" /></li>
+            <li data-slide="5"><img src="../../images/5.jpg" alt="5" /></li>
+            <li data-slide="3"><img src="../../images/3.jpg" alt="3" /></li>
+          </ul>
+        </div>
+        <ul class="box">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <pre id="pre"></pre>
+
+  </main>
+    
+  <script src="../../js/slider.js"></script>
+  
+  <script id="script">
+var slider = new Slider([
+  {
+
+
+   // Основной контейнер
+   sliderContainer: 'container-slider',
+
+
+   // Контейнер слайдов
+   allSlidesList: 'all-list',
+   timeout: 1000,
+   speed: 500,
+   autoplay: false,
+   startSlide: function (obj) {
+
+
+     // 'obj' - возвращает данные о текущем слайде
+   },
+   endSlide: function (obj) {},
+   controls: {
+
+
+     // Кнопки следюющий/предыдущий
+     // Классы для копок 'next'/'prev'
+     arrowsNavigation: {
+       classNameBtnNext: 'next',
+       classNameBtnPrev: 'prev'
+     }
+   }
+ }, {
+   sliderContainer: 'container-slider',
+   allSlidesList: 'all-list',
+   timeout: 1000,
+   speed: 500,
+   autoplay: false,
+   controls: {
+     arrowsNavigation: {
+       classNameBtnNext: 'next',
+       classNameBtnPrev: 'prev'
+     },
+
+
+     // Нумирация слайдов
+     // Контейнер класс 'dots'
+     // Активный слайд класс 'active'
+     dotsNavigation: {
+       classNameDots: 'dots',
+       classNameActive: 'active'
+     }
+   }
+ }, {
+   sliderContainer: 'container-slider',
+   allSlidesList: 'all-list',
+   timeout: 1000,
+   speed: 500,
+   autoplay: false,
+   controls: {
+     arrowsNavigation: {
+       classNameBtnNext: 'next',
+       classNameBtnPrev: 'prev'
+     },
+
+
+     // Дополнительная навигация Бокс-меню
+     boxMenu: {
+       classNameBox: document.getElementsByClassName('box')[0],
+       classNameActive: 'active'
+     },
+     dotsNavigation: {
+       classNameDots: 'dots',
+       classNameActive: 'active'
+     }
+   }
+ }
+]);
+
+//*******************************API***********************************
+// slider.Buttons('< следующий/предыдущий слайд >', < index элемента >);
+// slider.Buttons('next', 0);
+// slider.Buttons('prev', 1);
+  </script>
+
+  <script>
+  var code = document.getElementById('script').textContent;
+  document.getElementById('pre').textContent = code;
+  </script>
+
+  </body>
+</html>

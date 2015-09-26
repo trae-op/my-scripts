@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <title>Router</title>
+  </head>
+  <body>
+
+  <main id="main" role="main">
+    <h1>Router</h1> 
+
+    <a class="back" href="/">Назад</a>
+    
+    <section class="demonstration">
+
+    <a class="block-router" href="#/block/0">0</a>
+    <a class="block-router" href="#/block/1">1</a>
+    <a class="block-router" href="#/block/2">2</a>
+
+    </section>
+
+    <pre id="pre"></pre>
+
+  </main>
+    
+  <script src="../../js/router.js"></script>
+  
+  <script id="script">
+  function activeBlock(index) {
+    var element = document.getElementsByClassName('block-router');
+    
+    if (!element[index])
+      return;
+
+    for (var i = 0; i < element.length; i++)
+      element[i].classList.remove('active-router');
+
+      element[index].classList.add('active-router');
+  }
+
+  _router.Initialize(function(object) {
+    return [
+      {
+        // 'id' - ВСЁ ЧТО ПОСЛЕ 'block' С АДРЕСНОЙ СТРОКИ 
+        adressURL: 'block:id',
+        callBack: function(id) {
+          activeBlock(id);
+        }
+      },
+      {
+        // СОВПАДЕНИЕ С АДРЕСНОЙ СТРОКОЙ
+        adressURL: 'page2',
+        callBack: function(url) {
+          alert(url);
+        }
+      },
+      {
+        adressURL: '',
+        callBack: function(url) {
+          window.location.hash = '/block/0';
+        }
+      },
+      {
+        // ЕСЛИ ИЗ ПРЕДЫДУЩИХ ВАРИАНТОВ НЕ СОВПАЛО
+        adressURL: '*',
+        callBack: function(url) {
+          console.warn('incorrect URL: "' + url + '"');
+        }
+      }
+    ];
+  });
+
+  _router.Start(_router.AllData);
+
+  //---------------------------------------
+  //  API
+  // _router.ChangeUrl(' ВСЁ ПОСЛЕ "#" ');
+  //
+  //---------------------------------------
+  </script>
+
+  <script>
+  var code = document.getElementById('script').textContent;
+  document.getElementById('pre').textContent = code;
+  </script>
+
+  </body>
+</html>

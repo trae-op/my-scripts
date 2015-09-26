@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <title>Validation fields</title>
+  </head>
+  <body>
+
+  <main id="main" role="main">
+    <h1>Validation fields</h1> 
+
+    <a class="back" href="/">Назад</a>
+
+    <section class="demonstration">
+    
+    <form id="form-send" class="validation-form" action="#" type="post">
+      <input id="name" type="text" placeholder="name" />
+      <input id="e-mail" type="text" placeholder="e-mail" />
+      <input id="phone" type="text" placeholder="phone" />
+      <textarea id="description-text" placeholder="description"></textarea>
+
+      <select id="select">
+        <option>item1</option>
+        <option>item2</option>
+        <option>item3</option>
+        <option>item4</option>
+      </select>
+
+      <span>ie</span>
+      <input id="radio" type="radio" name="browser" value="ie" checked="checked">
+
+      <span>firefox</span>
+      <input id="radio2" type="radio" name="browser" value="firefox">
+
+      <span>hey</span>
+      <input id="checkbox" type="checkbox" value="hey" checked="checked" />
+
+      <input id="send" type="submit"  value="submit">
+    </form>
+
+    </section>
+
+    <pre id="pre"></pre>
+
+  </main>
+    
+  <script src="../../js/validation.js"></script>
+  
+  <script id="script">
+_validation.start({
+  form: document.getElementById('form-send'),
+  checkElems:[
+
+    // 'text' - тип элемента формы
+    // 'document.getElementById('name')' - элемент формы
+     ['text',document.getElementById('name')],
+
+     ['email',document.getElementById('e-mail')],
+     ['phone',document.getElementById('phone')],
+
+     ['text',document.getElementById('description-text'),
+
+     // ДЛЯ ИНДИВИДУАЛЬНОЙ ПРОВЕРКИ ДАННОГО ПОЛЯ 'description-text'
+     //------------------------------------------------------------
+     // Введены не корректные данные
+       function(e) {
+        e.style.border='1px solid blue';
+      // В случии правки не корректных данных
+       }, function(e) {
+        e.style.border='1px solid green';
+       }
+     ],
+
+     // 'false' - не обязательное поле
+     ['select',document.getElementById('select'),false],
+
+     ['radio',document.getElementById('radio')],
+     ['radio',document.getElementById('radio2')],
+     ['checkbox',document.getElementById('checkbox')]
+  ],
+
+  // ДЛЯ ВСЕХ ПОЛЕЙ
+  //---------------
+  // Введены не корректные данные
+  startError:function(e){
+    e.style.border='1px solid red';
+  },
+
+  // В случии правки не корректных данных
+  endError:function(e){
+    e.style.border='1px solid black';
+  },
+
+  // После корректного ввода данных всех полей
+   sendData:function(data){
+
+    // 'data' - массив содержащий значения всех данных
+    console.log(data);
+  }
+});
+  </script>
+
+  <script>
+  var code = document.getElementById('script').textContent;
+  document.getElementById('pre').textContent = code;
+  </script>
+
+  </body>
+</html>

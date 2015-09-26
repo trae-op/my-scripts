@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <title>Audio-Video</title>
+  </head>
+  <body>
+
+  <main id="main" role="main">
+    <h1>Audio & Video</h1> 
+
+    <a class="back" href="/">Назад</a>
+    
+    <section class="demonstration">
+
+      <div class="audio">
+        <div class="new-progress">
+          <div class="load-progress"></div>
+          <div class="progress"></div>
+        </div>
+        <div class="new-volume"></div>
+        <p>
+          <span class="new-startTime"></span> /
+          <span class="new-endTime"></span>
+        </p>
+        <div class="new-play">play</div>
+        <div class="new-pause">pause</div>
+        <div class="new-stop">stop</div>
+      </div>
+
+      <div class="video">
+        <video id="video"></video>
+        <div class="new-progress">
+          <div class="load-progress"></div>
+          <div class="progress"></div>
+        </div>
+        <div class="new-volume"></div>
+        <p>
+          <span class="new-startTime"></span> /
+          <span class="new-endTime"></span>
+        </p>
+        <div class="new-play">play</div>
+        <div class="new-pause">pause</div>
+        <div class="new-stop">stop</div>
+      </div>
+
+    </section>
+
+    <pre id="pre"></pre>
+
+  </main>
+    
+  <script src="../../js/audio-video.js"></script>
+  
+  <script id="script">
+var audioVideo = new AudioVideo([
+  {
+    // Autoplay
+    //autoPlay: true,
+    path: [
+      'http://apps.ua/mp3/music.mp3'
+    ],
+
+    // 'loadProgress' - в процесе
+    loadProgress: function (value) {
+      document.getElementsByClassName('load-progress')[0]
+        .style.width = value + '%';
+    },
+
+    // 'end' - после окончания
+    end: function (val) {
+      console.log(val);
+    },
+
+    // 'error' - если браузер не поддерживает
+    error: function (infoError) {
+      console.log(infoError);
+    },
+
+    // Контроль над элементами навигации
+    controls: {
+
+      // Громкость начальная 
+      valueVolume: 50,
+
+      // Позиция трека начальная
+      //valueProgress: 50,
+
+      // Если элемент управления вертикальный, а не горизонтальный
+      // К этому необходимо корректировку стилей
+      //verticalVolume: true,
+
+      // Элемент управления для 'play'
+      play: 'new-play',
+
+      // Для 'pause'
+      pause: 'new-pause',
+
+      // Для 'stop'
+      stop: 'new-stop',
+
+      // Для 'progress'
+      progress: 'progress',
+
+      // Для 'volume'
+      volume: 'new-volume',
+
+      // Таймер отщёта с начала трека
+      tagStartTime: 'new-startTime',
+
+      // Таймер отщёта с конца трека
+      tagEndTime: 'new-endTime'
+    }
+  },
+  {
+    //autoPlay: true,
+
+    // Для активации видео
+    video: true,
+
+    // Элемент c id <video id="video">
+    element: 'video',
+    path: [
+      'http://www.cantinanegrar.it/asset/video/amarone.ogv',
+      'http://www.cantinanegrar.it/asset/video/amarone.mp4'
+    ],
+    loadProgress: function (value) {
+      document.getElementsByClassName('load-progress')[1]
+        .style.width = value + '%';
+    },
+    end: function (val) {
+      console.log(val);
+    },
+    error: function (infoError) {
+      console.log(infoError);
+    },
+    controls: {
+      valueVolume: 10,
+      //valueProgress: 50,
+      //verticalVolume: true,
+      play: 'new-play',
+      pause: 'new-pause',
+      stop: 'new-stop',
+      progress: 'progress',
+      volume: 'new-volume',
+      tagStartTime: 'new-startTime',
+      tagEndTime: 'new-endTime'
+    }
+  }
+]);
+
+
+// ******************************API******************************
+// audioVideo.Play(< index элемента массива >); 
+// audioVideo.Play(0);
+
+// audioVideo.Stop(< index >);
+
+// audioVideo.Pause(< index >);
+
+// audioVideo.Progress(< index >, < перемотка от 0 до 100 >);
+// audioVideo.Progress(1, 20);
+
+// audioVideo.Volume(< index >, < +/- 0-100 >);
+
+// вытащить текущюю позицию трека
+// audioVideo.ValueProgress(< index >);
+
+// audioVideo.Track(< index >, [< путь к треку mp3/mp4/ogv/ogg >]);
+/*
+  audioVideo.Track(0, 
+    [
+      'https://www.mp3poisk.me/dl/468794-ludacris-srart-(www.mp3poisk.me).mp3'
+    ]
+  );
+*/
+  </script>
+
+  <script>
+  var code = document.getElementById('script').textContent;
+  document.getElementById('pre').textContent = code;
+  </script>
+
+  </body>
+</html>
