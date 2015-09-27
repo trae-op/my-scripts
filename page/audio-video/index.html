@@ -54,7 +54,10 @@
 
     </section>
 
-<pre class="javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">var</span> audioVideo <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> AudioVideo<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#91;</span>
+<pre class="javascript" style="font-family:monospace;"><span style="color: #006600; font-style: italic;">// new AudioVideo(&lt; Коллекция моделей &gt;);</span>
+<span style="color: #006600; font-style: italic;">// Коллекция - массив (список треков)</span>
+<span style="color: #006600; font-style: italic;">// Модель - объект (один трек)</span>
+<span style="color: #000066; font-weight: bold;">var</span> audioVideo <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> AudioVideo<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#91;</span>
   <span style="color: #009900;">&#123;</span>
     <span style="color: #006600; font-style: italic;">// Autoplay</span>
     <span style="color: #006600; font-style: italic;">//autoPlay: true,</span>
@@ -62,13 +65,13 @@
       <span style="color: #3366CC;">'http://apps.ua/mp3/music.mp3'</span>
     <span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
 &nbsp;
-    <span style="color: #006600; font-style: italic;">// 'loadProgress' - в процесе</span>
+    <span style="color: #006600; font-style: italic;">// 'loadProgress' - в процессе</span>
     loadProgress<span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">function</span> <span style="color: #009900;">&#40;</span>value<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
       document.<span style="color: #660066;">getElementsByClassName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'load-progress'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#91;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#93;</span>
         .<span style="color: #660066;">style</span>.<span style="color: #660066;">width</span> <span style="color: #339933;">=</span> value <span style="color: #339933;">+</span> <span style="color: #3366CC;">'%'</span><span style="color: #339933;">;</span>
     <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
 &nbsp;
-    <span style="color: #006600; font-style: italic;">// 'end' - после окончания</span>
+    <span style="color: #006600; font-style: italic;">// 'end' - конец трека</span>
     end<span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">function</span> <span style="color: #009900;">&#40;</span>val<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
       console.<span style="color: #660066;">log</span><span style="color: #009900;">&#40;</span>val<span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
     <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
@@ -81,35 +84,26 @@
     <span style="color: #006600; font-style: italic;">// Контроль над элементами навигации</span>
     controls<span style="color: #339933;">:</span> <span style="color: #009900;">&#123;</span>
 &nbsp;
-      <span style="color: #006600; font-style: italic;">// Громкость начальная </span>
+      <span style="color: #006600; font-style: italic;">// Default volume </span>
       valueVolume<span style="color: #339933;">:</span> <span style="color: #CC0000;">50</span><span style="color: #339933;">,</span>
 &nbsp;
-      <span style="color: #006600; font-style: italic;">// Позиция трека начальная</span>
-      <span style="color: #006600; font-style: italic;">//valueProgress: 50,</span>
+      <span style="color: #006600; font-style: italic;">// Default progress</span>
+      valueProgress<span style="color: #339933;">:</span> <span style="color: #CC0000;">0</span><span style="color: #339933;">,</span>
 &nbsp;
-      <span style="color: #006600; font-style: italic;">// Если элемент управления вертикальный, а не горизонтальный</span>
-      <span style="color: #006600; font-style: italic;">// К этому необходимо корректировку стилей</span>
+      <span style="color: #006600; font-style: italic;">// Элемент управления вертикальный</span>
       <span style="color: #006600; font-style: italic;">//verticalVolume: true,</span>
 &nbsp;
-      <span style="color: #006600; font-style: italic;">// Элемент управления для 'play'</span>
+      <span style="color: #006600; font-style: italic;">// Класс 'new-play'</span>
       play<span style="color: #339933;">:</span> <span style="color: #3366CC;">'new-play'</span><span style="color: #339933;">,</span>
-&nbsp;
-      <span style="color: #006600; font-style: italic;">// Для 'pause'</span>
       pause<span style="color: #339933;">:</span> <span style="color: #3366CC;">'new-pause'</span><span style="color: #339933;">,</span>
-&nbsp;
-      <span style="color: #006600; font-style: italic;">// Для 'stop'</span>
       stop<span style="color: #339933;">:</span> <span style="color: #3366CC;">'new-stop'</span><span style="color: #339933;">,</span>
-&nbsp;
-      <span style="color: #006600; font-style: italic;">// Для 'progress'</span>
       progress<span style="color: #339933;">:</span> <span style="color: #3366CC;">'progress'</span><span style="color: #339933;">,</span>
-&nbsp;
-      <span style="color: #006600; font-style: italic;">// Для 'volume'</span>
       volume<span style="color: #339933;">:</span> <span style="color: #3366CC;">'new-volume'</span><span style="color: #339933;">,</span>
 &nbsp;
       <span style="color: #006600; font-style: italic;">// Таймер отсчета с начала трека</span>
       tagStartTime<span style="color: #339933;">:</span> <span style="color: #3366CC;">'new-startTime'</span><span style="color: #339933;">,</span>
 &nbsp;
-      <span style="color: #006600; font-style: italic;">// Таймер отсчета с конца трека</span>
+      <span style="color: #006600; font-style: italic;">// С конца трека</span>
       tagEndTime<span style="color: #339933;">:</span> <span style="color: #3366CC;">'new-endTime'</span>
     <span style="color: #009900;">&#125;</span>
   <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
@@ -117,7 +111,7 @@
   <span style="color: #009900;">&#123;</span>
     <span style="color: #006600; font-style: italic;">//autoPlay: true,</span>
 &nbsp;
-    <span style="color: #006600; font-style: italic;">// Для активации видео</span>
+    <span style="color: #006600; font-style: italic;">// Активация</span>
     video<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span>
 &nbsp;
     <span style="color: #006600; font-style: italic;">// Элемент c id &lt;video id=&quot;video&quot;&gt;</span>
@@ -153,22 +147,22 @@
 &nbsp;
 &nbsp;
 <span style="color: #006600; font-style: italic;">// ******************************API******************************</span>
-<span style="color: #006600; font-style: italic;">// audioVideo.Play(&lt; index элемента массива &gt;); </span>
+<span style="color: #006600; font-style: italic;">// audioVideo.Play(&lt; index модели &gt;); </span>
 <span style="color: #006600; font-style: italic;">// audioVideo.Play(0);</span>
 &nbsp;
 <span style="color: #006600; font-style: italic;">// audioVideo.Stop(&lt; index &gt;);</span>
 &nbsp;
 <span style="color: #006600; font-style: italic;">// audioVideo.Pause(&lt; index &gt;);</span>
 &nbsp;
-<span style="color: #006600; font-style: italic;">// audioVideo.Progress(&lt; index &gt;, &lt; перемотка от 0 до 100 &gt;);</span>
+<span style="color: #006600; font-style: italic;">// audioVideo.Progress(&lt; index &gt;, &lt; диапазон 0-100 &gt;);</span>
 <span style="color: #006600; font-style: italic;">// audioVideo.Progress(1, 20);</span>
 &nbsp;
 <span style="color: #006600; font-style: italic;">// audioVideo.Volume(&lt; index &gt;, &lt; +/- 0-100 &gt;);</span>
 &nbsp;
-<span style="color: #006600; font-style: italic;">// вытащить текущюю позицию трека</span>
+<span style="color: #006600; font-style: italic;">// получить текущюю значение</span>
 <span style="color: #006600; font-style: italic;">// audioVideo.ValueProgress(&lt; index &gt;);</span>
 &nbsp;
-<span style="color: #006600; font-style: italic;">// audioVideo.Track(&lt; index &gt;, [&lt; путь к треку mp3/mp4/ogv/ogg &gt;]);</span>
+<span style="color: #006600; font-style: italic;">// audioVideo.Track(&lt; index &gt;, [&lt; путь mp3/mp4/ogv/ogg &gt;]);</span>
 <span style="color: #006600; font-style: italic;">/*
   audioVideo.Track(0, 
     [
@@ -182,6 +176,10 @@
   <script src="../../js/audio-video.js"></script>
   
   <script id="script">
+
+// new AudioVideo(< Коллекция моделей >);
+// Коллекция - массив (список треков)
+// Модель - объект (один трек)
 var audioVideo = new AudioVideo([
   {
     // Autoplay
@@ -190,13 +188,13 @@ var audioVideo = new AudioVideo([
       'http://apps.ua/mp3/music.mp3'
     ],
 
-    // 'loadProgress' - в процесе
+    // 'loadProgress' - в процессе
     loadProgress: function (value) {
       document.getElementsByClassName('load-progress')[0]
         .style.width = value + '%';
     },
 
-    // 'end' - после окончания
+    // 'end' - конец трека
     end: function (val) {
       console.log(val);
     },
@@ -209,35 +207,26 @@ var audioVideo = new AudioVideo([
     // Контроль над элементами навигации
     controls: {
 
-      // Громкость начальная 
+      // Default volume 
       valueVolume: 50,
 
-      // Позиция трека начальная
-      //valueProgress: 50,
+      // Default progress
+      valueProgress: 0,
 
-      // Если элемент управления вертикальный, а не горизонтальный
-      // К этому необходимо корректировку стилей
+      // Элемент управления вертикальный
       //verticalVolume: true,
 
-      // Элемент управления для 'play'
+      // Класс 'new-play'
       play: 'new-play',
-
-      // Для 'pause'
       pause: 'new-pause',
-
-      // Для 'stop'
       stop: 'new-stop',
-
-      // Для 'progress'
       progress: 'progress',
-
-      // Для 'volume'
       volume: 'new-volume',
 
       // Таймер отсчета с начала трека
       tagStartTime: 'new-startTime',
 
-      // Таймер отсчета с конца трека
+      // С конца трека
       tagEndTime: 'new-endTime'
     }
   },
@@ -245,7 +234,7 @@ var audioVideo = new AudioVideo([
   {
     //autoPlay: true,
 
-    // Для активации видео
+    // Активация
     video: true,
 
     // Элемент c id <video id="video">
@@ -281,22 +270,22 @@ var audioVideo = new AudioVideo([
 
 
 // ******************************API******************************
-// audioVideo.Play(< index элемента массива >); 
+// audioVideo.Play(< index модели >); 
 // audioVideo.Play(0);
 
 // audioVideo.Stop(< index >);
 
 // audioVideo.Pause(< index >);
 
-// audioVideo.Progress(< index >, < перемотка от 0 до 100 >);
+// audioVideo.Progress(< index >, < диапазон 0-100 >);
 // audioVideo.Progress(1, 20);
 
 // audioVideo.Volume(< index >, < +/- 0-100 >);
 
-// вытащить текущюю позицию трека
+// получить текущюю значение
 // audioVideo.ValueProgress(< index >);
 
-// audioVideo.Track(< index >, [< путь к треку mp3/mp4/ogv/ogg >]);
+// audioVideo.Track(< index >, [< путь mp3/mp4/ogv/ogg >]);
 /*
   audioVideo.Track(0, 
     [

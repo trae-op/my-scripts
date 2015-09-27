@@ -33,13 +33,15 @@
       </div>
 
     </section>
-
-<pre class="javascript" style="font-family:monospace;"><span style="color: #000066; font-weight: bold;">new</span> MoveElement<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#91;</span>
+<pre class="javascript" style="font-family:monospace;"><span style="color: #006600; font-style: italic;">// new MoveElement(&lt; Коллекция моделей &gt;);</span>
+<span style="color: #006600; font-style: italic;">// Коллекция - массив (список треков)</span>
+<span style="color: #006600; font-style: italic;">// Модель - объект (один трек)</span>
+<span style="color: #000066; font-weight: bold;">new</span> MoveElement<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#91;</span>
   <span style="color: #009900;">&#123;</span>
     container<span style="color: #339933;">:</span> document.<span style="color: #660066;">getElementsByClassName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'container-dragenddrop'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#91;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
     element<span style="color: #339933;">:</span> document.<span style="color: #660066;">getElementsByClassName</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'move-dragenddrop'</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#91;</span><span style="color: #CC0000;">0</span><span style="color: #009900;">&#93;</span><span style="color: #339933;">,</span>
 &nbsp;
-    <span style="color: #006600; font-style: italic;">// ОТОБРАЗИТЬ СТАРТОВЫЕ ПОЗИЦИИ</span>
+    <span style="color: #006600; font-style: italic;">// ПОКАЗАТЬ СТАРТОВЫЕ ПОЗИЦИИ</span>
     showPosition<span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">function</span><span style="color: #009900;">&#40;</span>obj<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
       document.<span style="color: #660066;">getElementById</span><span style="color: #009900;">&#40;</span><span style="color: #3366CC;">'all'</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">textContent</span> <span style="color: #339933;">=</span> <span style="color: #3366CC;">'X:'</span> <span style="color: #339933;">+</span> obj.<span style="color: #660066;">x</span> <span style="color: #339933;">+</span> <span style="color: #3366CC;">' Y:'</span> <span style="color: #339933;">+</span> obj.<span style="color: #660066;">y</span><span style="color: #339933;">;</span>
     <span style="color: #009900;">&#125;</span><span style="color: #339933;">,</span>
@@ -97,18 +99,20 @@
     <span style="color: #009900;">&#125;</span>
   <span style="color: #009900;">&#125;</span>
 <span style="color: #009900;">&#93;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span></pre>
-
   </main>
     
   <script src="../../js/move-element.js"></script>
   
   <script id="script">
+// new MoveElement(< Коллекция моделей >);
+// Коллекция - массив (список треков)
+// Модель - объект (один трек)
 new MoveElement([
   {
     container: document.getElementsByClassName('container-dragenddrop')[0],
     element: document.getElementsByClassName('move-dragenddrop')[0],
 
-    // ОТОБРАЗИТЬ СТАРТОВЫЕ ПОЗИЦИИ
+    // ПОКАЗАТЬ СТАРТОВЫЕ ПОЗИЦИИ
     showPosition: function(obj) {
       document.getElementById('all').textContent = 'X:' + obj.x + ' Y:' + obj.y;
     },
