@@ -1,3 +1,7 @@
+.navigation li:after {
+  content: "";
+  display: block; }
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, main, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -56,7 +60,11 @@ body * {
 h1 {
   font-size: 25px;
   font-weight: bold;
-  margin: 20px 0; }
+  margin: 20px 0 0; }
+
+h2 {
+  font-size: 20px;
+  margin: 10px 0; }
 
 p {
   font-size: 15px;
@@ -72,36 +80,24 @@ p {
   left: 50%;
   position: absolute;
   top: 50%;
-  text-align: center;
-  width: 750px; }
+  width: 400px; }
   .navigation li {
-    display: -moz-inline-stack;
-    display: inline-block;
-    vertical-align: top;
-    *vertical-align: auto;
-    zoom: 1;
-    *display: inline;
-    background: #483d41;
-    height: 180px;
-    margin-left: -10px;
-    position: relative;
-    width: 180px; }
-    .navigation li:nth-child(2n) {
-      background: #666; }
+    display: table;
+    margin-bottom: 15px; }
+    .navigation li:after {
+      -webkit-transition: width 0.2s false;
+      -moz-transition: width 0.2s false false;
+      -o-transition: width 0.2s false false;
+      transition: width 0.2s;
+      background: #000;
+      height: 1px;
+      width: 100%; }
+    .navigation li:hover:after {
+      width: 0; }
   .navigation a {
-    color: #fff;
-    font-size: 15px;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    text-align: center;
-    width: 100%; }
-    .navigation a:before {
-      content: "";
-      display: inline-block;
-      height: 100%;
-      vertical-align: middle; }
+    color: #000;
+    font-size: 30px;
+    font-style: italic; }
 
 #main {
   margin: 0 auto;
@@ -114,8 +110,9 @@ p {
     font-size: 15px;
     line-height: 20px; }
   #main .back {
-    background: #333;
-    color: #fff;
+    color: #000;
+    font-size: 20px;
+    font-style: italic;
     display: block;
     padding: 5px 0;
     margin: 5px 0 10px auto;
@@ -274,11 +271,16 @@ pre {
   background: green; }
 
 .audio, .video {
+  display: table;
+  border: 1px solid #666;
+  padding: 10px;
   text-align: left;
   margin-bottom: 40px; }
+  .audio h2, .video h2 {
+    margin-top: 0; }
 
 #video {
-  width: 70%; }
+  width: 500px; }
 
 .new-progress, .new-volume, .progress {
   width: 300px;
@@ -311,11 +313,19 @@ pre {
   background: #ccc;
   text-align: center;
   line-height: 20px;
-  margin: 5px 0;
   cursor: pointer; }
 
 .audio p {
-  color: #fff; }
+  color: #fff;
+  margin: 0; }
+
+.naviagtion-av div {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline; }
 
 .validation-form {
   margin-bottom: 20px; }
@@ -516,13 +526,11 @@ pre {
 
 #move-two {
   bottom: auto;
-  height: 114px;
+  height: 128px;
   left: 50%;
-  margin-top: -57px;
-  margin-left: -57px;
+  margin-top: -64px;
+  margin-left: -64px;
   position: absolute;
   top: 50%;
-  width: 114px;
-  width: 114px;
-  height: 114px;
-  background: url(https://livelovely.com/static/images/inbox/inbox-favorite-large-icon-gray.png) center no-repeat; }
+  width: 128px;
+  background: url(https://cdn1.iconfinder.com/data/icons/communication-bold-line-2/48/91-128.png) center no-repeat; }

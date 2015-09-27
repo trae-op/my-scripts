@@ -68,24 +68,34 @@
     if (!dataControl.range) return;
 
     var rangeText = dataControl.range + '';
-    var rangeFrom = parseInt(rangeText.replace(/.{5}\((.*)\).*/,'$1'));
-    var rangeTo   = parseInt(rangeText.replace(/.{5}\(.*\).{4}\((.*?)\)/,'$1'));
+    var cleanSpaces = rangeText.replace(/\s|[a-z]/g,'');
+    var rangeFrom = parseInt(cleanSpaces.replace(/\((.*?)\)/,'$1'));
+    var rangeTo   = parseInt(cleanSpaces.replace(/\((.*?)\)\((.*?)\)/,'$2'));
 
       if (check === 'bottom') {
         if (dataControl.counter <= (rangeTo)) {
           dataControl.counter = rangeTo;
           dataControl.stopEvenBottom = true;
-        } else
+        } else {
+
+          if (dataControl.flagStart) {
+            dataControl.counter = rangeFrom + dataControl.counter;
+            dataControl.flagStart = false;
+          }
+
           dataControl.stopEvenTop = false;
+        }
       }
 
       if (check === 'top') {
         if (dataControl.range) {
-          if (dataControl.counter >= rangeFrom) {
+          if (dataControl.counter >= (rangeFrom)) {
             dataControl.counter = rangeFrom;
             dataControl.stopEvenTop = true;
           } else
             dataControl.stopEvenBottom = false;
+
+            dataControl.flagStart = false;
         }
       }
 
@@ -103,6 +113,7 @@
 
         dataControl.counter         = 0;
         dataControl.flag            = true;
+        dataControl.flagStart       = true;
         dataControl.stopEventTop    = false;
         dataControl.stopEventBottom = false;
 
