@@ -32,6 +32,11 @@
       //top.window.location.href='https://sandbox-my.scorim.com/v1/transactions/callback';
     }
     window.addEventListener('DOMContentLoaded', init, false);
+    window.addEventListener('message', (event) => {
+      if (event.data.call) {
+        console.log('get message from parent', event.data);
+      }
+    }, false);
   </script>
     
   </body>
