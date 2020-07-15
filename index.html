@@ -23,7 +23,7 @@
   <script>
     function init() {
       console.log("DOMContentLoaded");
-      parent.postMessage({
+      window.parent.postMessage({
         'call': 'redirect_url',
         'value': {
           payment_type: 'success'
